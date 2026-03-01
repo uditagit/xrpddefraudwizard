@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 6 - Police Report | XRPD Fraud Recovery</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .trust-strip { background-color: #222; padding: 8px; text-align: center; font-size: 14px; color: #ccc; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .progress { display: flex; justify-content: space-between; margin: 20px 0 10px; font-size: 14px; color: #888; }
+        .progress .active { color: #3A95FF; font-weight: bold; }
+        .progress-bar { background-color: #333; height: 6px; border-radius: 3px; margin-bottom: 30px; }
+        .progress-fill { background-color: #3A95FF; height: 6px; width: 100%; border-radius: 3px; }
+        h2 { font-size: 24px; margin-bottom: 10px; }
+        .subtitle { color: #aaa; margin-bottom: 20px; }
+        .option { display: block; margin-bottom: 12px; padding: 10px; background-color: #111; border: 1px solid #333; border-radius: 6px; cursor: pointer; }
+        .option:hover { border-color: #3A95FF; }
+        .option input { margin-right: 12px; }
+        #case-number-container { margin-top: 16px; display: none; }
+        #case-number { width: 100%; padding: 12px; background-color: #222; border: 1px solid #444; color: #fff; border-radius: 6px; box-sizing: border-box; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 40px; }
+        .btn { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; }
+        .btn-outline { background: transparent; border: 1px solid #3A95FF; color: #3A95FF; }
+        .btn-primary { background: #3A95FF; color: #000; border: none; }
+    </style>
+</head>
+<body>
+    <div class="trust-strip">⚠️ We never ask for seed phrase. No guaranteed recovery. Beware of upfront fees.</div>
+    <div class="container">
+        <div class="progress">
+            <span class="active">1. Incident</span><span class="active">2. Chain</span><span class="active">3. Wallet</span><span class="active">4. Country</span><span class="active">5. Loss</span><span class="active">6. Police</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <h2>Have you already filed a police report for this incident?</h2>
+        <div class="subtitle"></div>
+        <div class="options">
+            <label class="option"><input type="radio" name="police" value="filed" onclick="showCaseNumber(true)"> Yes, I have a case number</label>
+            <label class="option"><input type="radio" name="police" value="not_filed" onclick="showCaseNumber(false)"> No, not yet</label>
+            <label class="option"><input type="radio" name="police" value="unknown" onclick="showCaseNumber(false)"> Not sure</label>
+        </div>
+        <div id="case-number-container">
+            <label for="case-number">Police case number (optional):</label>
+            <input type="text" id="case-number" placeholder="e.g. 23-123456" />
+        </div>
+        <div class="nav-buttons">
+            <a href="step-5.html" class="btn btn-outline">← Back</a>
+            <button onclick="goNext()" class="btn btn-primary">See Results →</button>
+        </div>
+    </div>
+    <script>
+        function getUrlParams() {
+            return new URLSearchParams(window.location.search);
+        }
+        function buildBaseUrl() {
+            const params = getUrlParams();
+            return `results.html?incident=${params.get('incident') || 'unknown'}&chain=${params.get('chain') || 'unknown'}&wallet=${params.get('wallet') || 'skipped'}&country=${params.get('country') || 'unknown'}&loss=${params.get('loss') || 'unknown'}`;
+        }
+        function showCaseNumber(show) {
+            document.getElementById('case-number-container').style.display = show ? 'block' : 'none';
+        }
+        function goNext() {
+            const selected = document.querySelector('input[name="police"]:checked');
+            if (!selected) { alert('Please select an option.'); return; }
+            let policeParam = `&police=${selected.value}`;
+            if (selected.value === 'filed') {
+                const caseNum = document.getElementById('case-number').value.trim();
+                policeParam += `&case_number=${encodeURIComponent(caseNum || 'not_provided')}`;
+            }
+            window.location.href = buildBaseUrl() + policeParam;
+        }
+    </script>
+</body>
+</html>
