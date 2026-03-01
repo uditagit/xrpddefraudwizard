@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recovery Plan | XRPD Fraud Recovery</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .trust-strip { background-color: #222; padding: 8px; text-align: center; font-size: 14px; color: #ccc; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1 { font-size: 28px; margin-bottom: 10px; }
+        .subtitle { color: #aaa; margin-bottom: 30px; }
+        .block { background-color: #111; border: 1px solid #333; border-radius: 8px; padding: 20px; margin-bottom: 25px; }
+        .block h2 { font-size: 20px; margin-top: 0; margin-bottom: 15px; color: #3A95FF; }
+        .step-list { list-style: none; padding: 0; }
+        .step-list li { margin-bottom: 12px; padding-left: 24px; position: relative; }
+        .step-list li:before { content: "→"; color: #3A95FF; position: absolute; left: 0; }
+        .reporting-links a { color: #3A95FF; text-decoration: none; display: inline-block; margin-right: 15px; margin-bottom: 10px; border: 1px solid #3A95FF; padding: 6px 12px; border-radius: 4px; }
+        .reporting-links a:hover { background-color: #3A95FF; color: #000; }
+        .checklist-section { margin-top: 20px; }
+        .checklist-section h3 { font-size: 18px; margin: 0 0 10px; color: #ccc; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .checklist-items { list-style: none; padding: 0; }
+        .checklist-items li { margin-bottom: 8px; padding-left: 20px; position: relative; color: #ddd; }
+        .checklist-items li:before { content: "•"; color: #3A95FF; font-weight: bold; position: absolute; left: 0; }
+        .warning-box { background-color: #221111; border-left: 4px solid #ff4444; padding: 15px; margin: 15px 0; }
+        .warning-box p { margin: 8px 0; color: #ffaaaa; }
+        .pricing-box { background: linear-gradient(145deg, #1a2a3a, #0f1a24); border-radius: 8px; padding: 20px; text-align: center; }
+        .pricing-box h3 { font-size: 24px; margin: 0 0 10px; }
+        .price { font-size: 36px; font-weight: bold; color: #3A95FF; margin: 10px 0; }
+        .btn-primary { background: #3A95FF; color: #000; border: none; padding: 12px 30px; border-radius: 6px; font-weight: bold; font-size: 16px; cursor: pointer; text-decoration: none; display: inline-block; margin: 10px 0; }
+        .btn-primary:hover { background: #1a7ac4; }
+        .btn-outline { background: transparent; border: 1px solid #3A95FF; color: #3A95FF; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; }
+        .btn-outline:hover { background: #3A95FF; color: #000; }
+        .footer-links { text-align: center; margin: 30px 0; }
+        .compliance-note { font-size: 12px; color: #777; text-align: center; margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; }
+        .badge { background-color: #2a2a2a; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #aaa; }
+    </style>
+</head>
+<body>
+    <div class="trust-strip">⚠️ We never ask for seed phrase. No guaranteed recovery. Beware of upfront fees.</div>
+    <div class="container">
+        <h1>Your personalized recovery plan</h1>
+        <div class="subtitle">Based on your answers, here are the recommended next steps.</div>
+
+        <!-- Block 1: Next 15 minutes (static for now) -->
+        <div class="block">
+            <h2>⏱️ Next 15 minutes</h2>
+            <ul class="step-list">
+                <li><strong>Move remaining assets</strong> – Transfer any funds left in the compromised wallet to a new, secure wallet immediately.</li>
+                <li><strong>Revoke approvals</strong> – Use Revoke.cash to remove any suspicious token approvals (Ethereum, BNB, etc.).</li>
+                <li><strong>Secure your device</strong> – Run antivirus scan, change passwords, enable 2FA.</li>
+            </ul>
+        </div>
+
+        <!-- Block 2: Do today (Reporting) with country-specific link -->
+        <div class="block">
+            <h2>📋 Do today – Reporting</h2>
+            <p><strong>File a police report</strong> – Bring your XRPD Case ID and the forensic report when filing.</p>
+            <div class="reporting-links" id="reporting-links">
+                <!-- Will be filled by JS based on country -->
+            </div>
+            <p style="color: #aaa; font-size: 14px; margin-top: 15px;">
+                <em>If you already filed, email or drop off the XRPD report to your investigating officer.</em>
+            </p>
+        </div>
+
+        <!-- Block 3: Evidence checklist (dynamic) -->
+        <div class="block" id="checklist-block">
+            <h2>📎 Evidence checklist: what to gather next</h2>
+            <p style="color: #aaa; margin-bottom: 15px;">You don't need everything. Start with what you have—we'll help you fill gaps.</p>
+            <div id="checklist-container"></div>
+        </div>
+
+        <!-- Block 4: What to avoid -->
+        <div class="block">
+            <h2>⚠️ What to avoid</h2>
+            <div class="warning-box">
+                <p>❌ Do not share your seed phrase or private keys with anyone.</p>
+                <p>❌ Do not pay recovery agents who promise guaranteed recovery.</p>
+                <p>❌ Do not install remote access tools requested by strangers.</p>
+                <p>❌ Do not keep negotiating with scammers.</p>
+                <p>❌ Do not click new links from "support" messages.</p>
+            </div>
+        </div>
+
+        <!-- Block 5: Make it actionable (conversion) -->
+        <div class="block">
+            <h2>🔍 Make it actionable</h2>
+            <div class="pricing-box">
+                <h3>Deep Analytics Forensics Report</h3>
+                <div class="price" id="price">$299</div>
+                <p style="color: #ccc;" id="price-sub">For losses under $100k</p>
+                <p style="font-size: 14px; margin: 15px 0;">
+                    The XRPD Deep Analytics Forensics Report is structured to support chain-of-custody clarity and investigative follow-up, including communications with exchanges and service providers.
+                </p>
+                <a href="../account/create.html" class="btn-primary">Purchase Report</a>
+                <p style="margin-top: 15px;">
+                    <a href="#" style="color: #3A95FF;">Add ongoing tracing ($199/30 days)</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer navigation -->
+        <div class="footer-links">
+            <a href="step-6.html" class="btn-outline">← Back</a>
+            <a href="../index.html" class="btn-outline" style="margin-left: 15px;">Start Over</a>
+        </div>
+
+        <div class="compliance-note">
+            <p>We offer flexible payment options, including Buy Now Pay Later (availability depends on your region).</p>
+            <p>⚠️ We will never ask for your seed phrase or private keys. No one can guarantee recovery. Beware of recovery agents demanding upfront crypto.</p>
+        </div>
+    </div>
+
+    <script>
+        // ---------- Full evidence checklist JSON from the document ----------
+        const checklistConfig = {
+            "evidenceChecklistConfigId": "xrpd_evidence_checklist_v1",
+            "version": "1.0.0",
+            "global": {
+                "title": "Evidence checklist: what to gather next",
+                "subtitle": "You do not need everything. Start with what you have and we will help you fill the gaps."
+            },
+            "caseTypes": {
+                "A": {
+                    "title": "Wallet drained or wallet compromise",
+                    "sections": [
+                        {
+                            "id": "A_onchain_essentials",
+                            "title": "On-chain essentials",
+                            "items": [
+                                "The wallet address that was drained",
+                                "Transaction hashes (TXIDs) for unauthorized transfers",
+                                "An approximate date and time you noticed the drain",
+                                "Destination addresses (where funds were sent)"
+                            ]
+                        },
+                        {
+                            "id": "A_interactions",
+                            "title": "What you interacted with",
+                            "items": [
+                                "Website links you connected your wallet to",
+                                "Any approvals or signatures you remember (if known)",
+                                "Screenshots of your wallet activity view showing the unauthorized transactions"
+                            ]
+                        }
+                    ],
+                    "conditionalSections": [
+                        {
+                            "id": "A_device_account_context",
+                            "title": "Device and account context",
+                            "showIfAny": [
+                                {"stateKey": "device_compromised", "in": ["computer", "phone", "maybe"]},
+                                {"stateKey": "seed_exposed", "in": ["yes", "unknown"]}
+                            ],
+                            "items": [
+                                "Device type used (computer or phone)",
+                                "Any suspicious downloads, browser extensions, or remote-access apps",
+                                "Email account used for exchange or wallet notifications",
+                                "Exchange accounts connected to the wallet (if any) and any login alerts"
+                            ]
+                        },
+                        {
+                            "id": "A_optional_scam_evidence",
+                            "title": "Optional but helpful",
+                            "showIfAny": [
+                                {"stateKey": "connected_recently", "in": ["yes", "unknown"]},
+                                {"stateKey": "seed_exposed", "in": ["yes", "unknown"]}
+                            ],
+                            "items": [
+                                "Screenshots of scam messages, fake support chats, or phishing pages",
+                                "A note about whether you typed your recovery phrase anywhere (do not provide the phrase itself)"
+                            ]
+                        }
+                    ]
+                },
+                "B": {
+                    "title": "You sent funds under deception",
+                    "sections": [
+                        {
+                            "id": "B_onchain_essentials",
+                            "title": "On-chain essentials",
+                            "items": [
+                                "Transaction hashes (TXIDs) for each transfer you sent",
+                                "Destination wallet address(es) you sent to",
+                                "Date and time you sent each transfer (approximate is fine)"
+                            ]
+                        },
+                        {
+                            "id": "B_scam_evidence",
+                            "title": "Scam evidence",
+                            "items": [
+                                "Screenshots of messages or instructions (Telegram, text, email, DMs)",
+                                "Website URLs involved",
+                                "Phone numbers, email addresses, usernames, or admin handles",
+                                "Any fake documents, dashboards, or screenshots they sent you"
+                            ]
+                        },
+                        {
+                            "id": "B_timeline",
+                            "title": "Timeline",
+                            "items": [
+                                "A short timeline of events with approximate timestamps",
+                                "Notes about how you were instructed to send funds and why"
+                            ]
+                        }
+                    ],
+                    "conditionalSections": [
+                        {
+                            "id": "B_exchange_details",
+                            "title": "If you sent from an exchange",
+                            "showIfAny": [
+                                {"stateKey": "sent_from", "in": ["exchange", "both"]}
+                            ],
+                            "items": [
+                                "Exchange name",
+                                "Withdrawal confirmation emails or receipts",
+                                "Withdrawal IDs (if available)",
+                                "Any exchange support ticket numbers (if you opened one)"
+                            ]
+                        }
+                    ]
+                },
+                "C": {
+                    "title": "Rug pull or token fraud",
+                    "sections": [
+                        {
+                            "id": "C_token_contract",
+                            "title": "Token and contract",
+                            "items": [
+                                "Token name and symbol",
+                                "Contract address (if known)",
+                                "Chain or network where the token exists"
+                            ]
+                        },
+                        {
+                            "id": "C_activity",
+                            "title": "Your purchase and activity",
+                            "items": [
+                                "TXID(s) for your buy or swap",
+                                "TXID(s) for sell attempts or failed sells (if attempted)",
+                                "Screenshots showing you cannot sell, trading is halted, or liquidity is gone",
+                                "DEX or CEX name where you traded (if known)"
+                            ]
+                        },
+                        {
+                            "id": "C_project_evidence",
+                            "title": "Project evidence",
+                            "items": [
+                                "Project website and social links (Telegram, X, Discord)",
+                                "Screenshots of marketing claims, promised returns, roadmap, and team claims",
+                                "Screenshots of deleted pages or disappearing channels (if possible)"
+                            ]
+                        }
+                    ],
+                    "conditionalSections": [
+                        {
+                            "id": "C_presale",
+                            "title": "If this was a presale or private sale",
+                            "showIfAny": [
+                                {"stateKey": "bought_where", "in": ["presale"]}
+                            ],
+                            "items": [
+                                "Presale wallet address you paid",
+                                "Payment TXID(s)",
+                                "Screenshots of presale terms or promises"
+                            ]
+                        }
+                    ]
+                },
+                "D": {
+                    "title": "Exchange account takeover or unauthorized withdrawals",
+                    "sections": [
+                        {
+                            "id": "D_exchange_essentials",
+                            "title": "Exchange essentials",
+                            "items": [
+                                "Exchange name",
+                                "Account email or username",
+                                "Login alerts or security emails",
+                                "Withdrawal history export or screenshots"
+                            ]
+                        }
+                    ],
+                    "conditionalSections": [
+                        {
+                            "id": "D_onchain",
+                            "title": "On-chain essentials (if withdrawals went to an external wallet)",
+                            "showIfAny": [
+                                {"stateKey": "external_withdrawals", "in": ["yes", "unknown"]}
+                            ],
+                            "items": [
+                                "TXIDs of withdrawals",
+                                "Destination wallet address(es)",
+                                "Date and time of each withdrawal"
+                            ]
+                        },
+                        {
+                            "id": "D_compromise_indicators",
+                            "title": "Compromise indicators",
+                            "showIfAny": [
+                                {"stateKey": "email_or_sim_compromise", "in": ["yes", "unknown"]}
+                            ],
+                            "items": [
+                                "Evidence of SIM swap (carrier messages, sudden service loss)",
+                                "Email compromise indicators (password reset emails, new device sign-ins)",
+                                "Authorized devices list from the exchange account (if available)"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "chainAwareAdditions": [
+                {
+                    "id": "chain_revoke_optional",
+                    "title": "Optional (if you revoked approvals)",
+                    "showIfAny": [
+                        {"stateKey": "showRevoke", "equals": true}
+                    ],
+                    "items": [
+                        "Screenshot of the revoke page showing approvals before and after (optional)",
+                        "Connected sites list from your wallet settings (optional)"
+                    ]
+                },
+                {
+                    "id": "chain_utxo_notes",
+                    "title": "Chain-specific note (Bitcoin, Litecoin, BSV)",
+                    "showIfAny": [
+                        {"stateKey": "chain_family", "equals": "UTXO"}
+                    ],
+                    "items": [
+                        "All addresses involved in the incident",
+                        "Any exchange deposit address involved (if known)"
+                    ]
+                },
+                {
+                    "id": "chain_xrpl_xlm_memo",
+                    "title": "Chain-specific note (XRP Ledger / Stellar)",
+                    "showIfAny": [
+                        {"stateKey": "chain_key", "in": ["xrp", "xlm"]}
+                    ],
+                    "items": [
+                        "Any memo or destination tag used (if applicable)"
+                    ]
+                }
+            ]
+        };
+
+        // ---------- Get URL parameters ----------
+        const urlParams = new URLSearchParams(window.location.search);
+        const incident = urlParams.get('incident') || 'A';  // default to A for demo
+        const chain = urlParams.get('chain') || 'eth';
+        const loss = urlParams.get('loss') || 'under_100k';
+        const country = urlParams.get('country') || 'US';
+        // Additional params for conditional sections (we'll simulate some for now)
+        const deviceCompromised = urlParams.get('device_compromised') || 'no';      // would come from extended wizard
+        const seedExposed = urlParams.get('seed_exposed') || 'no';
+        const connectedRecently = urlParams.get('connected_recently') || 'no';
+        const sentFrom = urlParams.get('sent_from') || 'unknown';
+        const externalWithdrawals = urlParams.get('external_withdrawals') || 'unknown';
+        const emailOrSim = urlParams.get('email_or_sim_compromise') || 'no';
+        const boughtWhere = urlParams.get('bought_where') || 'unknown';
+        // For chain families
+        const chainFamilies = {
+            'btc': 'UTXO', 'bsv': 'UTXO', 'ltc': 'UTXO',
+            'eth': 'EVM', 'bnb': 'EVM', 'polygon': 'EVM', 'arb': 'EVM', 'op': 'EVM', 'avax': 'EVM',
+            'sol': 'SOLANA',
+            'xrp': 'XRPL',
+            'xlm': 'STELLAR',
+            'trx': 'TRON',
+            'dot': 'SUBSTRATE'
+        };
+        const chainFamily = chainFamilies[chain] || 'UNKNOWN';
+
+        // Helper to check if a condition matches
+        function matchesCondition(condition, answers) {
+            if (condition.stateKey === 'chain_family') {
+                return condition.equals === chainFamily;
+            }
+            if (condition.stateKey === 'chain_key') {
+                return condition.in.includes(chain);
+            }
+            if (condition.stateKey === 'showRevoke') {
+                // For prototype, assume revoke is shown if chain supports it and connected_recently is yes/unknown
+                const supportsRevoke = ['eth','bnb','polygon','arb','op','avax','sol'].includes(chain);
+                return supportsRevoke && (connectedRecently === 'yes' || connectedRecently === 'unknown');
+            }
+            // Map answer keys to our URL params (in real app would be more comprehensive)
+            const answerMap = {
+                'device_compromised': deviceCompromised,
+                'seed_exposed': seedExposed,
+                'connected_recently': connectedRecently,
+                'sent_from': sentFrom,
+                'external_withdrawals': externalWithdrawals,
+                'email_or_sim_compromise': emailOrSim,
+                'bought_where': boughtWhere
+            };
+            const actualValue = answerMap[condition.stateKey];
+            if (!actualValue) return false;
+            if (condition.in) return condition.in.includes(actualValue);
+            if (condition.equals) return condition.equals === actualValue;
+            return false;
+        }
+
+        // ---------- Render checklist for the case type ----------
+        function renderChecklist() {
+            const caseData = checklistConfig.caseTypes[incident];
+            if (!caseData) {
+                document.getElementById('checklist-container').innerHTML = '<p>No checklist available for this incident type.</p>';
+                return;
+            }
+
+            let html = `<h3>${caseData.title}</h3>`;
+
+            // Render main sections
+            caseData.sections.forEach(section => {
+                html += `<div class="checklist-section"><h4>${section.title}</h4><ul class="checklist-items">`;
+                section.items.forEach(item => { html += `<li>${item}</li>`; });
+                html += '</ul></div>';
+            });
+
+            // Render conditional sections if they should be shown
+            if (caseData.conditionalSections) {
+                caseData.conditionalSections.forEach(section => {
+                    const show = section.showIfAny.some(cond => matchesCondition(cond, {}));
+                    if (show) {
+                        html += `<div class="checklist-section"><h4>${section.title}</h4><ul class="checklist-items">`;
+                        section.items.forEach(item => { html += `<li>${item}</li>`; });
+                        html += '</ul></div>';
+                    }
+                });
+            }
+
+            // Chain-aware additions
+            checklistConfig.chainAwareAdditions.forEach(add => {
+                const show = add.showIfAny.some(cond => matchesCondition(cond, {}));
+                if (show) {
+                    html += `<div class="checklist-section"><h4>${add.title}</h4><ul class="checklist-items">`;
+                    add.items.forEach(item => { html += `<li>${item}</li>`; });
+                    html += '</ul></div>';
+                }
+            });
+
+            document.getElementById('checklist-container').innerHTML = html;
+        }
+
+        // ---------- Set reporting link based on country ----------
+        function setReportingLink() {
+            const linksDiv = document.getElementById('reporting-links');
+            let linkHtml = '';
+            const countryUpper = country.toUpperCase();
+            if (countryUpper === 'US') linkHtml = '<a href="https://www.ic3.gov/" target="_blank">🇺🇸 Report to IC3</a>';
+            else if (countryUpper === 'UK') linkHtml = '<a href="https://www.actionfraud.police.uk/" target="_blank">🇬🇧 Report to Action Fraud</a>';
+            else if (countryUpper === 'CA') linkHtml = '<a href="https://reportcyberandfraud.canada.ca/" target="_blank">🇨🇦 Report Cybercrime</a>';
+            else if (countryUpper === 'AU') linkHtml = '<a href="https://www.cyber.gov.au/report" target="_blank">🇦🇺 ReportCyber</a>';
+            else if (countryUpper === 'EU') linkHtml = '<a href="https://www.europol.europa.eu/report-a-crime/report-cybercrime-online" target="_blank">🇪🇺 Europol portal</a>';
+            else linkHtml = '<a href="#">Report to local police</a>';
+            linksDiv.innerHTML = linkHtml;
+        }
+
+        // ---------- Set price based on loss ----------
+        function setPrice() {
+            const priceEl = document.getElementById('price');
+            const subEl = document.getElementById('price-sub');
+            if (loss === 'over_100k') {
+                priceEl.innerText = '$399';
+                subEl.innerText = 'For losses $100k or more';
+            } else {
+                priceEl.innerText = '$299';
+                subEl.innerText = 'For losses under $100k';
+            }
+        }
+
+        // Run on page load
+        window.onload = function() {
+            renderChecklist();
+            setReportingLink();
+            setPrice();
+        };
+    </script>
+</body>
+</html>

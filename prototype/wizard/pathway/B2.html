@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>...</head>
+<body>
+    <div class="trust-strip">...</div>
+    <div class="container">
+        <h2>Was this a single transfer, or were there multiple transfers?</h2>
+        <div class="options">
+            <label class="option"><input type="radio" name="answer" value="one"> One transfer</label>
+            <label class="option"><input type="radio" name="answer" value="multiple"> Multiple transfers</label>
+            <label class="option"><input type="radio" name="answer" value="unknown"> Not sure</label>
+        </div>
+        <div class="nav-buttons">
+            <a href="B1.html" class="btn btn-outline">← Back</a>
+            <button onclick="goNext()" class="btn btn-primary">Next →</button>
+        </div>
+    </div>
+    <script>
+        function getUrlParams() { return new URLSearchParams(window.location.search); }
+        function goNext() {
+            const selected = document.querySelector('input[name="answer"]:checked');
+            if (!selected) { alert('Please select an option.'); return; }
+            const params = getUrlParams();
+            params.set('transfer_count', selected.value);
+            window.location.href = 'B3.html?' + params.toString();
+        }
+    </script>
+</body>
+</html>
